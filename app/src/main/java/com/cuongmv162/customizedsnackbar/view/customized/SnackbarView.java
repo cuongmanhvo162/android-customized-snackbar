@@ -1,7 +1,10 @@
 package com.cuongmv162.customizedsnackbar.view.customized;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
@@ -72,11 +75,14 @@ public class SnackbarView extends RelativeLayout {
     public void show() {
         if (mContainer != null) {
             mContainer.setVisibility(View.VISIBLE);
+            dismiss();
         }
     }
 
     public void fixedDiplsay() {
-
+        if (mContainer != null) {
+            mContainer.setVisibility(View.VISIBLE);
+        }
     }
 
     public void hide() {
@@ -86,7 +92,21 @@ public class SnackbarView extends RelativeLayout {
     }
 
     public void dismiss() {
-
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mContainer.animate()
+                        .translationY(0)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                super.onAnimationEnd(animation);
+                                mContainer.setVisibility(View.GONE);
+                            }
+                        });
+            }
+        }, DISPLAY_TIME);
     }
 
     public void setDisplayTime(int displayTime) {
