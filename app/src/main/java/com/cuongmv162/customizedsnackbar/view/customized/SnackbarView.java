@@ -1,4 +1,4 @@
-package com.cuongmv162.customizedsnackbar.view;
+package com.cuongmv162.customizedsnackbar.view.customized;
 
 import android.content.Context;
 import android.os.Build;
@@ -17,7 +17,10 @@ import com.cuongmv162.customizedsnackbar.R;
 
 public class SnackbarView extends RelativeLayout {
     private static final int DISPLAY_TIME = 3000;
+    private static final int NEGATIVE_COLOR = -1;
+    private static final int POSITIVE_COLOR = -1;
 
+    private int mDisplayTime = 0;
     private Context mContext;
     private View mContainer;
 
@@ -66,15 +69,27 @@ public class SnackbarView extends RelativeLayout {
         this.mIcon.setImageResource(imageId);
     }
 
-    public void show(){
+    public void show() {
+        if (mContainer != null) {
+            mContainer.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void fixedDiplsay() {
 
     }
 
-    public void fixedDiplsay(){
+    public void hide() {
+        if (mContainer != null) {
+            mContainer.setVisibility(View.GONE);
+        }
+    }
+
+    public void dismiss() {
 
     }
 
-    public void dismiss(){
-
+    public void setDisplayTime(int displayTime) {
+        this.mDisplayTime = displayTime;
     }
 }
