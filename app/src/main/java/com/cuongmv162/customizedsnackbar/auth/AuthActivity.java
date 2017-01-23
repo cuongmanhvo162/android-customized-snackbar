@@ -72,11 +72,13 @@ public class AuthActivity extends Activity implements AuthView {
     public void loginSuccess() {
         mSnackbarView.setTitle("Login successfully");
         mSnackbarView.show();
+        mSnackbarView.dismiss();
     }
 
     @Override
     public void loginFailed() {
         mSnackbarView.setTitle("Login failed");
         mSnackbarView.show();
+        mSnackbarView.dismiss();
     }
 }

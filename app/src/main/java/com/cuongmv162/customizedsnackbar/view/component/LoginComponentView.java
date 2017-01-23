@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.cuongmv162.customizedsnackbar.R;
+import com.cuongmv162.customizedsnackbar.util.FontUtil;
 
 /**
  * Created by cuongmv162 on 1/21/2017.
@@ -49,8 +50,13 @@ public class LoginComponentView extends RelativeLayout {
         mContainer = inflate(mContext, R.layout.view_component_login, this);
 
         mUsername = (EditText) mContainer.findViewById(R.id.login_email);
+        mUsername.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_REGULAR));
+
         mPassword = (EditText) mContainer.findViewById(R.id.login_password);
+        mPassword.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_REGULAR));
+
         mSubmit = (Button) mContainer.findViewById(R.id.login_submit);
+        mSubmit.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_REGULAR));
     }
 
     public EditText getUsername() {
