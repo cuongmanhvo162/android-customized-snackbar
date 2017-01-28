@@ -7,10 +7,25 @@ package com.cuongmv162.customizedsnackbar.auth;
 public interface AuthModel {
     interface OnLoginFinishedListener {
         void onUsernameError();
+
         void onPasswordError();
-        void onSuccess();
+
+        void onSuccess(AuthData authdata);
+
+        void onFailed();
+    }
+
+    interface OnSignUpFinishedListener {
+        void onUsernameError();
+
+        void onPasswordError();
+
+        void onSuccess(AuthData authData);
+
         void onFailed();
     }
 
     void login(String username, String password, OnLoginFinishedListener onLoginFinishedListener);
+
+    void signup(String username, String email, String password, String confirmPassword, OnSignUpFinishedListener onSignUpFinishedListener);
 }

@@ -5,7 +5,9 @@ package com.cuongmv162.customizedsnackbar.auth;
  */
 
 public interface AuthPresenter {
-    void onLogin(String username, String password);
+    void doLogin(String username, String password);
+
+    void doSignup(String username, String email, String password, String confirmPassword);
 
     void onDestroy();
 }

@@ -5,10 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context="com.cuongmv162.customizedsnackbar.MainActivity">
 
-    <com.cuongmv162.customizedsnackbar.view.component.LoginComponentView
-        android:id="@+id/login"
+    <com.cuongmv162.customizedsnackbar.view.component.LoginSucceedComponentView
+        android:id="@+id/login_succeed_component_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <com.cuongmv162.customizedsnackbar.view.component.SignupSucceedComponentView
+        android:id="@+id/signup_succeed_component_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 </LinearLayout>

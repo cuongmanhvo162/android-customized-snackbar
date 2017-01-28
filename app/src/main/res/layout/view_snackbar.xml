@@ -6,16 +6,15 @@
 
     <TextView
         android:id="@+id/snackbar_title"
+        style="@style/TextStyle_14SP_Normal_White"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_green_dark"
         android:gravity="center"
         android:text="text" />
 
     <ImageView
         android:id="@+id/snackbar_icon"
         android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent" />
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

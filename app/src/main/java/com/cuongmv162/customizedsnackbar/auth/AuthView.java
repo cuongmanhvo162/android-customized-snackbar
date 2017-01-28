@@ -13,9 +13,11 @@ public interface AuthView {
 
     void setPasswordError();
 
-    void goHome();
-
-    void loginSuccess();
+    void loginSuccess(AuthData authData);
 
     void loginFailed();
+
+    void signupSuccess(AuthData authData);
+
+    void signupFailed();
 }

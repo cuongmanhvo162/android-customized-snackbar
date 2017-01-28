@@ -22,8 +22,8 @@ import com.cuongmv162.customizedsnackbar.util.FontUtil;
 public class SnackbarView extends RelativeLayout {
 
     private static final int DISPLAY_TIME = 3000;
-    private static final int NEGATIVE_COLOR = -1;
-    private static final int POSITIVE_COLOR = -1;
+    private static final int NEGATIVE_COLOR = R.color.colorRed;
+    private static final int POSITIVE_COLOR = R.color.colorPrimary;
 
     private int mDisplayTime = 0;
     private int mNegativeColor = -1;
@@ -62,7 +62,7 @@ public class SnackbarView extends RelativeLayout {
         mContainer = inflate(mContext, R.layout.view_snackbar, this);
 
         mIcon = (ImageView) mContainer.findViewById(R.id.snackbar_icon);
-        
+
         mTitle = (TextView) mContainer.findViewById(R.id.snackbar_title);
         mTitle.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_BOLD));
     }
@@ -98,7 +98,7 @@ public class SnackbarView extends RelativeLayout {
     }
 
     public void dismiss() {
-        int displayTime = 0;
+        int displayTime;
 
         if (mDisplayTime > 0) {
             displayTime = mDisplayTime;
@@ -133,5 +133,13 @@ public class SnackbarView extends RelativeLayout {
 
     public void setPositiveColor(int color) {
         mPositiveColor = color;
+    }
+
+    public void setNegativeColor() {
+        mContainer.setBackgroundColor(getResources().getColor(NEGATIVE_COLOR));
+    }
+
+    public void setPositive() {
+        mContainer.setBackgroundColor(getResources().getColor(POSITIVE_COLOR));
     }
 }
