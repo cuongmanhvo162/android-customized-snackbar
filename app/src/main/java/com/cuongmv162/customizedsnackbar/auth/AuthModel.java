@@ -10,9 +10,9 @@ public interface AuthModel {
 
         void onPasswordError();
 
-        void onSuccess(AuthData authdata);
+        void onLoginSuccess(AuthData authdata);
 
-        void onFailed();
+        void onLoginFailed();
     }
 
     interface OnSignUpFinishedListener {
@@ -20,9 +20,9 @@ public interface AuthModel {
 
         void onPasswordError();
 
-        void onSuccess(AuthData authData);
+        void onSignupSuccess(AuthData authData);
 
-        void onFailed();
+        void onSignupFailed();
     }
 
     void login(String username, String password, OnLoginFinishedListener onLoginFinishedListener);

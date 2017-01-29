@@ -25,7 +25,7 @@ public class AuthPresenterImpl implements AuthPresenter, AuthModel.OnLoginFinish
 
     @Override
     public void doSignup(String username, String email, String password, String confirmPassword) {
-        if(mAuthView != null){
+        if (mAuthView != null) {
             mAuthView.showProgress();
         }
 
@@ -54,16 +54,30 @@ public class AuthPresenterImpl implements AuthPresenter, AuthModel.OnLoginFinish
     }
 
     @Override
-    public void onSuccess(AuthData authData) {
+    public void onLoginSuccess(AuthData authdata) {
         if (mAuthView != null) {
-            mAuthView.loginSuccess(authData);
+            mAuthView.loginSuccess(authdata);
         }
     }
 
     @Override
-    public void onFailed() {
+    public void onLoginFailed() {
         if (mAuthView != null) {
             mAuthView.loginFailed();
+        }
+    }
+
+    @Override
+    public void onSignupSuccess(AuthData authData) {
+        if (mAuthView != null) {
+            mAuthView.signupSuccess(authData);
+        }
+    }
+
+    @Override
+    public void onSignupFailed() {
+        if (mAuthView != null) {
+            mAuthView.signupFailed();
         }
     }
 }

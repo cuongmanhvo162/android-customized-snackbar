@@ -4,30 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <com.cuongmv162.customizedsnackbar.view.component.TabAuthComponentView
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/login"
-            style="@style/TextStyle_14SP_Normal_White"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/login" />
-
-        <TextView
-            android:id="@+id/signup"
-            style="@style/TextStyle_14SP_Normal_White"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/signup" />
-    </LinearLayout>
+        android:layout_height="wrap_content" />
 
     <com.cuongmv162.customizedsnackbar.view.customized.SnackbarView
         android:id="@+id/my_snackbar"

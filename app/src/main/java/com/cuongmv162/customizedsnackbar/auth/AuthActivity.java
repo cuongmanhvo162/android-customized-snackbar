@@ -11,6 +11,7 @@ import com.cuongmv162.customizedsnackbar.R;
 import com.cuongmv162.customizedsnackbar.util.IntentUtil;
 import com.cuongmv162.customizedsnackbar.view.component.LoginComponentView;
 import com.cuongmv162.customizedsnackbar.view.component.SignUpComponentView;
+import com.cuongmv162.customizedsnackbar.view.component.TabAuthComponentView;
 import com.cuongmv162.customizedsnackbar.view.customized.SnackbarView;
 import com.cuongmv162.customizedsnackbar.view.util.SnackbarViewUtil;
 
@@ -23,6 +24,7 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
     private SnackbarView mSnackbarView;
     private LoginComponentView mLoginComponentView;
     private SignUpComponentView mSignUpComponentView;
+    private TabAuthComponentView mTabAuthComponentView;
     private AuthPresenter mAuthPresenter;
 
     @Override
@@ -53,7 +55,31 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
             }
         });
 
+        mTabAuthComponentView = (TabAuthComponentView) findViewById(R.id.tabs);
+        mTabAuthComponentView.getLoginTab().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogin();
+            }
+        });
+        mTabAuthComponentView.getSignupTab().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSignup();
+            }
+        });
+
         mAuthPresenter = new AuthPresenterImpl(this);
+    }
+
+    private void showLogin() {
+        mLoginComponentView.setVisibility(View.VISIBLE);
+        mSignUpComponentView.setVisibility(View.GONE);
+    }
+
+    private void showSignup() {
+        mLoginComponentView.setVisibility(View.GONE);
+        mSignUpComponentView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -84,43 +110,39 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
         mLoginComponentView.getPassword().setError("Password is empty");
     }
 
-   @Override
+    @Override
     public void loginSuccess(AuthData authData) {
         SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Login successfully");
 
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(AuthConstant.AUTH_DATA, authData);
-
-        Intent intent = IntentUtil.createIntentWithBundle(this
-                , MainActivity.class
-                , AuthConstant.AUTH_LOGIN
-                , bundle);
-        startActivity(intent);
-        finish();
+        goHome(authData, AuthConstant.AUTH_LOGIN);
     }
 
     @Override
     public void loginFailed() {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Login failed");
+        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Login failed");
     }
 
     @Override
     public void signupSuccess(AuthData authData) {
         SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Signup successfully");
 
+        goHome(authData, AuthConstant.AUTH_SIGNUP);
+    }
+
+    @Override
+    public void signupFailed() {
+        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Signup failed");
+    }
+
+    private void goHome(AuthData authData, String action) {
         Bundle bundle = new Bundle();
         bundle.putParcelable(AuthConstant.AUTH_DATA, authData);
 
         Intent intent = IntentUtil.createIntentWithBundle(this
                 , MainActivity.class
-                , AuthConstant.AUTH_SIGNUP
+                , action
                 , bundle);
         startActivity(intent);
         finish();
-    }
-
-    @Override
-    public void signupFailed() {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Signup failed");
     }
 }

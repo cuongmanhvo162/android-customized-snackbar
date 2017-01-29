@@ -9,17 +9,26 @@
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="text" />
+        android:layout_marginBottom="16dp"
+        android:hint="@string/email"
+        android:imeOptions="actionNext"
+        android:maxLines="1" />
 
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="text" />
+        android:layout_marginBottom="16dp"
+        android:hint="@string/password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/login_submit"
+        style="@style/TextStyle_14SP_Normal_White"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/submit" />
 </LinearLayout>

@@ -7,16 +7,16 @@ import com.cuongmv162.customizedsnackbar.view.customized.SnackbarView;
  */
 
 public class SnackbarViewUtil {
-    public static void displayNegativeMessage(SnackbarView snackbarView, String message){
+    public static void displayNegativeMessage(SnackbarView snackbarView, String message) {
         snackbarView.setTitle(message);
-        snackbarView.setPositive();
+        snackbarView.setNegativeColor();
         snackbarView.show();
         snackbarView.dismiss();
     }
 
-    public static void displayPositiveMessage(SnackbarView snackbarView, String message){
+    public static void displayPositiveMessage(SnackbarView snackbarView, String message) {
         snackbarView.setTitle(message);
-        snackbarView.setNegativeColor();
+        snackbarView.setPositive();
         snackbarView.show();
         snackbarView.dismiss();
     }

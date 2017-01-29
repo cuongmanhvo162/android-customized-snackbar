@@ -32,9 +32,9 @@ public class AuthModelImpl implements AuthModel {
                         authData.setPassword(password);
                         authData.setEmail("admin@gmail.com");
 
-                        onLoginFinishedListener.onSuccess(authData);
+                        onLoginFinishedListener.onLoginSuccess(authData);
                     } else {
-                        onLoginFinishedListener.onFailed();
+                        onLoginFinishedListener.onLoginFailed();
                     }
                 }
             }
@@ -53,10 +53,10 @@ public class AuthModelImpl implements AuthModel {
                     authData.setUsername(username);
                     authData.setEmail(email);
 
-                    onSignUpFinishedListener.onSuccess(authData);
+                    onSignUpFinishedListener.onSignupSuccess(authData);
 
                 } else {
-                    onSignUpFinishedListener.onFailed();
+                    onSignUpFinishedListener.onSignupFailed();
                 }
             }
         }, 3000);
