@@ -91,7 +91,7 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
     @Override
     public void showProgress() {
         mSnackbarView.setTitle("We are processing!");
-        mSnackbarView.setPositive();
+        mSnackbarView.setNeuturalColor();
         mSnackbarView.show();
     }
 
@@ -111,27 +111,47 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
-    public void loginSuccess(AuthData authData) {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Login successfully");
-
-        goHome(authData, AuthConstant.AUTH_LOGIN);
+    public void loginSuccess(final AuthData authData) {
+        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Login successfully", new SnackbarViewUtil.DismissListener() {
+            @Override
+            public void onDismiss(boolean animationEnd) {
+                if(animationEnd){
+                    goHome(authData, AuthConstant.AUTH_LOGIN);
+                }
+            }
+        });
     }
 
     @Override
     public void loginFailed() {
-        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Login failed");
+        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Login failed", new SnackbarViewUtil.DismissListener() {
+            @Override
+            public void onDismiss(boolean animationEnd) {
+                return;
+            }
+        });
     }
 
     @Override
-    public void signupSuccess(AuthData authData) {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Signup successfully");
-
-        goHome(authData, AuthConstant.AUTH_SIGNUP);
+    public void signupSuccess(final AuthData authData) {
+        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Signup successfully", new SnackbarViewUtil.DismissListener() {
+            @Override
+            public void onDismiss(boolean animationEnd) {
+                if(animationEnd){
+                    goHome(authData, AuthConstant.AUTH_SIGNUP);
+                }
+            }
+        });
     }
 
     @Override
     public void signupFailed() {
-        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Signup failed");
+        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Signup failed", new SnackbarViewUtil.DismissListener() {
+            @Override
+            public void onDismiss(boolean animationEnd) {
+                return;
+            }
+        });
     }
 
     private void goHome(AuthData authData, String action) {

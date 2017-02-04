@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.cuongmv162.customizedsnackbar.R;
 import com.cuongmv162.customizedsnackbar.util.FontUtil;
+import com.cuongmv162.customizedsnackbar.view.util.SnackbarViewUtil;
 
 /**
  * Created by cuongmv162 on 1/20/2017.
@@ -23,7 +24,8 @@ public class SnackbarView extends RelativeLayout {
 
     private static final int DISPLAY_TIME = 3000;
     private static final int NEGATIVE_COLOR = R.color.colorRed;
-    private static final int POSITIVE_COLOR = R.color.colorPrimary;
+    private static final int POSITIVE_COLOR = R.color.colorAccent;
+    private static final int NEUTURAL_COLOR =R.color.colorPrimary;
 
     private int mDisplayTime = 0;
     private int mNegativeColor = -1;
@@ -34,6 +36,8 @@ public class SnackbarView extends RelativeLayout {
 
     private ImageView mIcon;
     private TextView mTitle;
+
+    private SnackbarViewUtil.DismissListener mDismissListener;
 
     public SnackbarView(Context context) {
         super(context);
@@ -117,6 +121,7 @@ public class SnackbarView extends RelativeLayout {
                             public void onAnimationEnd(Animator animation) {
                                 super.onAnimationEnd(animation);
                                 mContainer.setVisibility(View.GONE);
+                                mDismissListener.onDismiss(true);
                             }
                         });
             }
@@ -141,5 +146,13 @@ public class SnackbarView extends RelativeLayout {
 
     public void setPositive() {
         mContainer.setBackgroundColor(getResources().getColor(POSITIVE_COLOR));
+    }
+
+    public void setNeuturalColor(){
+        mContainer.setBackgroundColor(getResources().getColor(NEUTURAL_COLOR));
+    }
+
+    public void setDismissListener(SnackbarViewUtil.DismissListener dismissListener){
+        this.mDismissListener = dismissListener;
     }
 }
