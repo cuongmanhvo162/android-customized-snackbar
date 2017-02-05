@@ -38,7 +38,7 @@ public class AuthModelImpl implements AuthModel {
                     }
                 }
             }
-        }, 5000);
+        }, 3000);
     }
 
     @Override

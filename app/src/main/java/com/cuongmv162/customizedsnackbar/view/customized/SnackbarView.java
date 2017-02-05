@@ -25,7 +25,7 @@ public class SnackbarView extends RelativeLayout {
     private static final int DISPLAY_TIME = 3000;
     private static final int NEGATIVE_COLOR = R.color.colorRed;
     private static final int POSITIVE_COLOR = R.color.colorAccent;
-    private static final int NEUTURAL_COLOR =R.color.colorPrimary;
+    private static final int NEUTRAL_COLOR =R.color.colorPrimary;
 
     private int mDisplayTime = 0;
     private int mNegativeColor = -1;
@@ -148,8 +148,8 @@ public class SnackbarView extends RelativeLayout {
         mContainer.setBackgroundColor(getResources().getColor(POSITIVE_COLOR));
     }
 
-    public void setNeuturalColor(){
-        mContainer.setBackgroundColor(getResources().getColor(NEUTURAL_COLOR));
+    public void setNeutralColor(){
+        mContainer.setBackgroundColor(getResources().getColor(NEUTRAL_COLOR));
     }
 
     public void setDismissListener(SnackbarViewUtil.DismissListener dismissListener){

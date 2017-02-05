@@ -1,6 +1,5 @@
 package com.cuongmv162.customizedsnackbar.auth;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -90,8 +89,8 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void showProgress() {
-        mSnackbarView.setTitle("We are processing!");
-        mSnackbarView.setNeuturalColor();
+        mSnackbarView.setTitle(R.string.processing);
+        mSnackbarView.setNeutralColor();
         mSnackbarView.show();
     }
 
@@ -102,20 +101,20 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void setUsernameError() {
-        mLoginComponentView.getUsername().setError("Username is empty");
+        mLoginComponentView.getUsername().setError(getString(R.string.username_is_empty));
     }
 
     @Override
     public void setPasswordError() {
-        mLoginComponentView.getPassword().setError("Password is empty");
+        mLoginComponentView.getPassword().setError(getString(R.string.password_is_empty));
     }
 
     @Override
     public void loginSuccess(final AuthData authData) {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Login successfully", new SnackbarViewUtil.DismissListener() {
+        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, R.string.login_successfully, new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
-                if(animationEnd){
+                if (animationEnd) {
                     goHome(authData, AuthConstant.AUTH_LOGIN);
                 }
             }
@@ -124,7 +123,7 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void loginFailed() {
-        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Login failed", new SnackbarViewUtil.DismissListener() {
+        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, R.string.login_failed, new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
                 return;
@@ -134,10 +133,10 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void signupSuccess(final AuthData authData) {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, "Signup successfully", new SnackbarViewUtil.DismissListener() {
+        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, R.string.signup_successfully, new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
-                if(animationEnd){
+                if (animationEnd) {
                     goHome(authData, AuthConstant.AUTH_SIGNUP);
                 }
             }
@@ -146,7 +145,7 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void signupFailed() {
-        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, "Signup failed", new SnackbarViewUtil.DismissListener() {
+        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, R.string.signup_failed, new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
                 return;

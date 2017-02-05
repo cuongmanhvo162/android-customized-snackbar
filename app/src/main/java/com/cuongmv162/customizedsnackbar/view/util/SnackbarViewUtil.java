@@ -10,7 +10,7 @@ public class SnackbarViewUtil {
         void onDismiss(boolean animationEnd);
     }
 
-    public static void displayNegativeMessage(SnackbarView snackbarView, String message, DismissListener dismissListener) {
+    public static void displayNegativeMessage(SnackbarView snackbarView, int message, DismissListener dismissListener) {
         snackbarView.setDismissListener(dismissListener);
         snackbarView.setTitle(message);
         snackbarView.setNegativeColor();
@@ -18,7 +18,7 @@ public class SnackbarViewUtil {
         snackbarView.dismiss();
     }
 
-    public static void displayPositiveMessage(SnackbarView snackbarView, String message, DismissListener dismissListener) {
+    public static void displayPositiveMessage(SnackbarView snackbarView, int message, DismissListener dismissListener) {
         snackbarView.setDismissListener(dismissListener);
         snackbarView.setTitle(message);
         snackbarView.setPositive();
@@ -27,10 +27,10 @@ public class SnackbarViewUtil {
 
     }
 
-    public static void displayNeuturalveMessage(SnackbarView snackbarView, String message, DismissListener dismissListener) {
+    public static void displayNeuturalveMessage(SnackbarView snackbarView, int message, DismissListener dismissListener) {
         snackbarView.setDismissListener(dismissListener);
         snackbarView.setTitle(message);
-        snackbarView.setNeuturalColor();
+        snackbarView.setNeutralColor();
         snackbarView.show();
         snackbarView.dismiss();
 

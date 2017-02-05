@@ -9,4 +9,11 @@
     <string name="password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="submit">Submit</string>
+    <string name="signup_successfully">Signup Successfully</string>
+    <string name="signup_failed">Signup Failed</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="login_successfully">Login Successfully</string>
+    <string name="processing">We are processing</string>
+    <string name="username_is_empty">Username is empty</string>
+    <string name="password_is_empty">Password is empty</string>
 </resources>
