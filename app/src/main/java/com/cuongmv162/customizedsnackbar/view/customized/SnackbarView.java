@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,7 +27,7 @@ public class SnackbarView extends RelativeLayout {
     private static final int DISPLAY_TIME = 3000;
     private static final int NEGATIVE_COLOR = R.color.colorRed;
     private static final int POSITIVE_COLOR = R.color.colorAccent;
-    private static final int NEUTRAL_COLOR =R.color.colorPrimary;
+    private static final int NEUTRAL_COLOR =R.color.colorPrimaryDark;
 
     private int mDisplayTime = 0;
     private int mNegativeColor = -1;
@@ -36,6 +38,9 @@ public class SnackbarView extends RelativeLayout {
 
     private ImageView mIcon;
     private TextView mTitle;
+
+    private Animation mShowAnimation;
+    private Animation mHideAnimation;
 
     private SnackbarViewUtil.DismissListener mDismissListener;
 
@@ -69,6 +74,57 @@ public class SnackbarView extends RelativeLayout {
 
         mTitle = (TextView) mContainer.findViewById(R.id.snackbar_title);
         mTitle.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_BOLD));
+
+        mShowAnimation = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in);
+        mHideAnimation = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out);
+    }
+
+    private void closeAnimation(int displayTime) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mContainer.startAnimation(mHideAnimation);
+                mHideAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        mContainer.setVisibility(View.GONE);
+                        mDismissListener.onDismiss(true);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+            }
+        }, displayTime);
+    }
+
+    private void showAnimation(){
+        mContainer.startAnimation(mShowAnimation);
+        mShowAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mContainer.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     public void setTitle(String title) {
@@ -85,7 +141,7 @@ public class SnackbarView extends RelativeLayout {
 
     public void show() {
         if (mContainer != null) {
-            mContainer.setVisibility(View.VISIBLE);
+            showAnimation();
         }
     }
 
@@ -110,22 +166,7 @@ public class SnackbarView extends RelativeLayout {
             displayTime = DISPLAY_TIME;
         }
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mContainer.animate()
-                        .translationY(0)
-                        .setListener(new AnimatorListenerAdapter() {
-                            @Override
-                            public void onAnimationEnd(Animator animation) {
-                                super.onAnimationEnd(animation);
-                                mContainer.setVisibility(View.GONE);
-                                mDismissListener.onDismiss(true);
-                            }
-                        });
-            }
-        }, displayTime);
+        closeAnimation(displayTime);
     }
 
     public void setDisplayTime(int displayTime) {
