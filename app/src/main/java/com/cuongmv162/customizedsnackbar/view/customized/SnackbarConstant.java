@@ -17,7 +17,8 @@ public class SnackbarConstant {
     @SnackbarStatus
     private int snackbarStatus = HIDDEN;
 
-    @IntDef({HIDDEN, SHOWING,ON_CLOSE})
+    @IntDef({HIDDEN, SHOWING, ON_CLOSE})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface SnackbarStatus {}
+    public @interface SnackbarStatus {
+    }
 }

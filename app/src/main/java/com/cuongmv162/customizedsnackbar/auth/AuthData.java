@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by cuongmv162 on 1/28/2017.
  */
 
-public class AuthData implements Parcelable{
+public class AuthData implements Parcelable {
 
     private String email;
     private String username;

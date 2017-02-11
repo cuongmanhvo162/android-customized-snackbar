@@ -89,7 +89,7 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void showProgress() {
-        mSnackbarView.setTitle(R.string.processing);
+        mSnackbarView.setMessage(R.string.processing);
         mSnackbarView.setNeutralColor();
         mSnackbarView.show();
     }
@@ -111,33 +111,61 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void loginSuccess(final AuthData authData) {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, R.string.login_successfully, new SnackbarViewUtil.DismissListener() {
+        mSnackbarView.dismiss(new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
-                if (animationEnd) {
-                    goHome(authData, AuthConstant.AUTH_LOGIN);
-                }
+                mSnackbarView.setMessage(R.string.login_successfully);
+                mSnackbarView.setPositive();
+                mSnackbarView.show();
+                mSnackbarView.autoClose(new SnackbarViewUtil.DismissListener() {
+                    @Override
+                    public void onDismiss(boolean animationEnd) {
+                        if (animationEnd) {
+                            goHome(authData, AuthConstant.AUTH_LOGIN);
+                        }
+                    }
+                });
             }
         });
     }
 
     @Override
     public void loginFailed() {
-        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, R.string.login_failed, new SnackbarViewUtil.DismissListener() {
+        mSnackbarView.dismiss(new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
-                return;
+                if (animationEnd) {
+                    mSnackbarView.setMessage(R.string.login_failed);
+                    mSnackbarView.setNegativeColor();
+                    mSnackbarView.show();
+                    mSnackbarView.autoClose(new SnackbarViewUtil.DismissListener() {
+                        @Override
+                        public void onDismiss(boolean animationEnd) {
+                            return;
+                        }
+                    });
+                }
             }
         });
     }
 
     @Override
     public void signupSuccess(final AuthData authData) {
-        SnackbarViewUtil.displayPositiveMessage(mSnackbarView, R.string.signup_successfully, new SnackbarViewUtil.DismissListener() {
+        mSnackbarView.dismiss(new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
                 if (animationEnd) {
-                    goHome(authData, AuthConstant.AUTH_SIGNUP);
+                    mSnackbarView.setMessage(R.string.signup_successfully);
+                    mSnackbarView.setPositive();
+                    mSnackbarView.show();
+                    mSnackbarView.autoClose(new SnackbarViewUtil.DismissListener() {
+                        @Override
+                        public void onDismiss(boolean animationEnd) {
+                            if (animationEnd) {
+                                goHome(authData, AuthConstant.AUTH_SIGNUP);
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -145,10 +173,18 @@ public class AuthActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void signupFailed() {
-        SnackbarViewUtil.displayNegativeMessage(mSnackbarView, R.string.signup_failed, new SnackbarViewUtil.DismissListener() {
+        mSnackbarView.dismiss(new SnackbarViewUtil.DismissListener() {
             @Override
             public void onDismiss(boolean animationEnd) {
-                return;
+                mSnackbarView.setMessage(R.string.signup_failed);
+                mSnackbarView.setNegativeColor();
+                mSnackbarView.show();
+                mSnackbarView.autoClose(new SnackbarViewUtil.DismissListener() {
+                    @Override
+                    public void onDismiss(boolean animationEnd) {
+                        return;
+                    }
+                });
             }
         });
     }

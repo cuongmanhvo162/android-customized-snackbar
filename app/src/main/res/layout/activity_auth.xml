@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.cuongmv162.customizedsnackbar.view.component.TabAuthComponentView
-        android:id="@+id/tabs"
+
+    <LinearLayout
+        android:id="@+id/auth_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.cuongmv162.customizedsnackbar.view.component.TabAuthComponentView
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.cuongmv162.customizedsnackbar.view.component.LoginComponentView
+            android:id="@+id/auth_component_view_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.cuongmv162.customizedsnackbar.view.component.SignUpComponentView
+            android:id="@+id/auth_component_view_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <com.cuongmv162.customizedsnackbar.view.customized.SnackbarView
         android:id="@+id/my_snackbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <com.cuongmv162.customizedsnackbar.view.component.LoginComponentView
-        android:id="@+id/auth_component_view_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <com.cuongmv162.customizedsnackbar.view.component.SignUpComponentView
-        android:id="@+id/auth_component_view_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-</LinearLayout>
+</FrameLayout>

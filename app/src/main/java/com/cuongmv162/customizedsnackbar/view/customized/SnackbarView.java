@@ -1,7 +1,5 @@
 package com.cuongmv162.customizedsnackbar.view.customized;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
@@ -27,17 +25,13 @@ public class SnackbarView extends RelativeLayout {
     private static final int DISPLAY_TIME = 3000;
     private static final int NEGATIVE_COLOR = R.color.colorRed;
     private static final int POSITIVE_COLOR = R.color.colorAccent;
-    private static final int NEUTRAL_COLOR =R.color.colorPrimaryDark;
-
-    private int mDisplayTime = 0;
-    private int mNegativeColor = -1;
-    private int mPositiveColor = -1;
+    private static final int NEUTRAL_COLOR = R.color.colorPrimaryDark;
 
     private Context mContext;
     private View mContainer;
 
     private ImageView mIcon;
-    private TextView mTitle;
+    private TextView mMessage;
 
     private Animation mShowAnimation;
     private Animation mHideAnimation;
@@ -72,44 +66,16 @@ public class SnackbarView extends RelativeLayout {
 
         mIcon = (ImageView) mContainer.findViewById(R.id.snackbar_icon);
 
-        mTitle = (TextView) mContainer.findViewById(R.id.snackbar_title);
-        mTitle.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_BOLD));
+        mMessage = (TextView) mContainer.findViewById(R.id.snackbar_title);
+        mMessage.setTypeface(FontUtil.getTypeface(mContext, FontUtil.NOTO_SANS_BOLD));
 
         mShowAnimation = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_in);
         mHideAnimation = AnimationUtils.loadAnimation(mContext, R.anim.anim_slide_out);
     }
 
-    private void closeAnimation(int displayTime) {
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mContainer.startAnimation(mHideAnimation);
-                mHideAnimation.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        mContainer.setVisibility(View.GONE);
-                        mDismissListener.onDismiss(true);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-
-            }
-        }, displayTime);
-    }
-
-    private void showAnimation(){
-        mContainer.startAnimation(mShowAnimation);
-        mShowAnimation.setAnimationListener(new Animation.AnimationListener() {
+    private void closeAnimation() {
+        mContainer.startAnimation(mHideAnimation);
+        mHideAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -117,7 +83,8 @@ public class SnackbarView extends RelativeLayout {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                mContainer.setVisibility(View.VISIBLE);
+                mContainer.setVisibility(View.GONE);
+                mDismissListener.onDismiss(true);
             }
 
             @Override
@@ -127,12 +94,32 @@ public class SnackbarView extends RelativeLayout {
         });
     }
 
-    public void setTitle(String title) {
-        this.mTitle.setText(title);
+    private void showAnimation() {
+        mContainer.startAnimation(mShowAnimation);
+        mShowAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                mContainer.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
-    public void setTitle(int title) {
-        this.mTitle.setText(title);
+    public void setMessage(String title) {
+        this.mMessage.setText(title);
+    }
+
+    public void setMessage(int title) {
+        this.mMessage.setText(title);
     }
 
     public void setImageIcon(int imageId) {
@@ -157,28 +144,9 @@ public class SnackbarView extends RelativeLayout {
         }
     }
 
-    public void dismiss() {
-        int displayTime;
-
-        if (mDisplayTime > 0) {
-            displayTime = mDisplayTime;
-        } else {
-            displayTime = DISPLAY_TIME;
-        }
-
-        closeAnimation(displayTime);
-    }
-
-    public void setDisplayTime(int displayTime) {
-        this.mDisplayTime = displayTime;
-    }
-
-    public void setNegativeColor(int color) {
-        mNegativeColor = color;
-    }
-
-    public void setPositiveColor(int color) {
-        mPositiveColor = color;
+    public void dismiss(SnackbarViewUtil.DismissListener dismissListener) {
+        this.mDismissListener = dismissListener;
+        closeAnimation();
     }
 
     public void setNegativeColor() {
@@ -189,11 +157,22 @@ public class SnackbarView extends RelativeLayout {
         mContainer.setBackgroundColor(getResources().getColor(POSITIVE_COLOR));
     }
 
-    public void setNeutralColor(){
+    public void setNeutralColor() {
         mContainer.setBackgroundColor(getResources().getColor(NEUTRAL_COLOR));
     }
 
-    public void setDismissListener(SnackbarViewUtil.DismissListener dismissListener){
+    public void setDismissListener(SnackbarViewUtil.DismissListener dismissListener) {
         this.mDismissListener = dismissListener;
+    }
+
+    public void autoClose(SnackbarViewUtil.DismissListener dismissListener) {
+        mDismissListener = dismissListener;
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                closeAnimation();
+            }
+        }, DISPLAY_TIME);
     }
 }
