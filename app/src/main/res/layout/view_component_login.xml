@@ -29,6 +29,7 @@
         style="@style/TextStyle_14SP_Normal_White"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/submit" />
 </LinearLayout>

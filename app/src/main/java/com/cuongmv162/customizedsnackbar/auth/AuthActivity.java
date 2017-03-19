@@ -19,7 +19,7 @@ import com.cuongmv162.customizedsnackbar.view.util.SnackbarViewUtil;
  */
 
 public class AuthActivity extends AppCompatActivity implements AuthView {
-
+    protected int a = 0;
     private SnackbarView mSnackbarView;
     private LoginComponentView mLoginComponentView;
     private SignUpComponentView mSignUpComponentView;
