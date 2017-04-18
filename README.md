@@ -1,6 +1,6 @@
 # Android Customized Snackbar
 
-If you never heard about Snackbar, this goo.gl/QsXJmI could provide you full description about Snackbar. According to Google, the core concept about Snackbar is, that will give feedback about an operation. It will display a short message to notify user or provide an action to let the user response to an operation.
+If you never heard about Snackbar, this <a href="goo.gl/QsXJmI">link</a> could provide you full description about Snackbar. According to Google, the core concept about Snackbar is, that will give feedback about an operation. It will display a short message to notify user or provide an action to let the user response to an operation.
 
 My project at my company currently implemented this feature. We will display a brief message on the top of the screen when ever user finished any operation on the screen. Came up with that idea, I created a customized view which I can re-use in every screens. So, this github will contain source code that demonstrate how to implement it.
 
