@@ -14,5 +14,11 @@ User may have another action while the app in process and customized snackbar be
 
 Here are some videos
 
-Signup successfully screen
-<div style="width:100%;height:0px;position:relative;padding-bottom:75.000%;"><iframe src="https://streamable.com/s/t6ha4/bueini" frameborder="0" width="100%" height="100%" allowfullscreen style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe></div>
+Signup successfully
+https://streamable.com/t6ha4
+
+Login successfully
+https://streamable.com/pxjop
+
+Login failed
+https://streamable.com/3oscs
