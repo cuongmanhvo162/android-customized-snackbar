@@ -9,7 +9,7 @@ Also, I really want to discuss about this design and the experience that I obser
 This design put customized snackbar on the top, so 90% that will immediately aware your user whenever it appears to user. The feeling for user when using the app which implemented this design instead of a standard dialog actually have difference looks and feel. From my personal view but I guess some of the others would agree with me that whenever the app throws the dialog into your face, the feeling is a just little bit less comfy, and sometime it is merely storm into my mind "Did I do something wrong."
 
 ##### Login successfully
-![ ](http://i.imgur.com/k9YpOZK.gifv)
+![ ](http://i.imgur.com/k9YpOZK.gif)
 
 It is more fun and could make more engagement between the user and your app by implemented appearance/closed animation for the snackbar. Put some shadow and make the snackbar's corner rounded. Swipe left, right or from bottom to top to dismiss the snackbar. These stuff will make your app significant to be unique.
 
