@@ -13,7 +13,13 @@ This design put customized snackbar on the top, so 90% that will immediately awa
 
 It is more fun and could make more engagement between the user and your app by implemented appearance/closed animation for the snackbar. Put some shadow and make the snackbar's corner rounded. Swipe left, right or from bottom to top to dismiss the snackbar. These stuff will make your app significant to be unique.
 
+##### Login failed
+![ ](http://i.imgur.com/FSPyaqH.gif)
+
 User may have another action while the app in process and customized snackbar being displayed and it could lead to unexpected result and might be generate error. To handle that case, I think we just need to disbale all touch of the screen. But, in case you want user have cancel-able rights we could implement interaction for it such as button or an icon. 
+
+##### Signup successful
+![ ](http://i.imgur.com/Gxnr9pX.gif)
 
 Therefore that will required more space on the snackbar and may decrease the length of the message. I think that is good to have one line placed horizontal for the content of the snackbar.  In my observation about this UX, we should have delay time for customized snackbar appearance after the app finished any process, lets your user actually aware what happened and avoid FOMO(fear of missing out).
 
