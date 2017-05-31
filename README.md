@@ -22,9 +22,3 @@ User may have another action while the app in process and customized snackbar be
 ![ ](http://i.imgur.com/Gxnr9pX.gif)
 
 Therefore that will required more space on the snackbar and may decrease the length of the message. I think that is good to have one line placed horizontal for the content of the snackbar.  In my observation about this UX, we should have delay time for customized snackbar appearance after the app finished any process, lets your user actually aware what happened and avoid FOMO(fear of missing out).
-
-Signup successfully
-https://streamable.com/t6ha4
-
-Login failed
-https://streamable.com/3oscs
