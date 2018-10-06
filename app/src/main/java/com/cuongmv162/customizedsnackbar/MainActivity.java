@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.cuongmv162.customizedsnackbar.auth.AuthConstant;
-import com.cuongmv162.customizedsnackbar.auth.AuthData;
+import com.cuongmv162.customizedsnackbar.auth.model.data.AuthData;
 import com.cuongmv162.customizedsnackbar.view.component.LoginSucceedComponentView;
-import com.cuongmv162.customizedsnackbar.view.component.SignUpComponentView;
 import com.cuongmv162.customizedsnackbar.view.component.SignupSucceedComponentView;
 
 public class MainActivity extends AppCompatActivity {

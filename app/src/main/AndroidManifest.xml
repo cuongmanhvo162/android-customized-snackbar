@@ -15,7 +15,7 @@
         </activity>
 
         <activity
-            android:name=".auth.AuthActivity"
+            android:name=".auth.view.AuthActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

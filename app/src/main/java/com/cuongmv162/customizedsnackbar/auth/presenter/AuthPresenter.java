@@ -1,4 +1,4 @@
-package com.cuongmv162.customizedsnackbar.auth;
+package com.cuongmv162.customizedsnackbar.auth.presenter;
 
 /**
  * Created by cuongmv162 on 1/22/2017.

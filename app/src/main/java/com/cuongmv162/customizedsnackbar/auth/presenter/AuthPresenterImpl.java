@@ -1,4 +1,9 @@
-package com.cuongmv162.customizedsnackbar.auth;
+package com.cuongmv162.customizedsnackbar.auth.presenter;
+
+import com.cuongmv162.customizedsnackbar.auth.model.data.AuthData;
+import com.cuongmv162.customizedsnackbar.auth.view.AuthView;
+import com.cuongmv162.customizedsnackbar.auth.model.AuthModel;
+import com.cuongmv162.customizedsnackbar.auth.model.AuthModelImpl;
 
 /**
  * Created by cuongmv162 on 1/22/2017.

@@ -1,4 +1,4 @@
-package com.cuongmv162.customizedsnackbar.auth;
+package com.cuongmv162.customizedsnackbar.auth.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 
 import com.cuongmv162.customizedsnackbar.MainActivity;
 import com.cuongmv162.customizedsnackbar.R;
+import com.cuongmv162.customizedsnackbar.auth.AuthConstant;
+import com.cuongmv162.customizedsnackbar.auth.model.data.AuthData;
+import com.cuongmv162.customizedsnackbar.auth.presenter.AuthPresenter;
+import com.cuongmv162.customizedsnackbar.auth.presenter.AuthPresenterImpl;
 import com.cuongmv162.customizedsnackbar.util.IntentUtil;
 import com.cuongmv162.customizedsnackbar.view.component.LoginComponentView;
 import com.cuongmv162.customizedsnackbar.view.component.SignUpComponentView;

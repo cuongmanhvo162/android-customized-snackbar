@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cuongmv162.customizedsnackbar.R;
-import com.cuongmv162.customizedsnackbar.auth.AuthData;
+import com.cuongmv162.customizedsnackbar.auth.model.data.AuthData;
 
 /**
  * Created by cuongmv162 on 1/28/2017.

@@ -1,4 +1,4 @@
-package com.cuongmv162.customizedsnackbar.auth;
+package com.cuongmv162.customizedsnackbar.auth.model.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
